@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HealthBridge AI 🏥
 
 **Providing hope and help during challenging times with AI-powered care.**
@@ -100,3 +101,6 @@ This project uses a local SQLite database and basic JWT-like token implementatio
 -   Replace SQLite with PostgreSQL/MySQL.
 -   Implement robust JWT authentication with expiration.
 -   Enable HTTPS.
+=======
+# HealthCareBridge-TechSprint
+>>>>>>> 23e8125638103fc89c5eae47d7a42f1d1c1d3077
