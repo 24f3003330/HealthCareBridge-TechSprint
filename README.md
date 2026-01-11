@@ -4,14 +4,14 @@
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-### For Clinicians 👩‍⚕️
+### For Clinicians 
 *   **AI Clinical Note Analysis**: Automatically extracts conditions and medications from unstructured clinical notes.
 *   **FHIR Interoperability**: Converts clinical data into standard FHIR bundles for easy integration with EMR systems.
 *   **Intelligent Insights**: Uses Google's Gemini models to de-identify patient data and provide smart summaries.
 
-### For Patients 👨‍👩‍👧‍👦
+### For Patients 
 *   **Smart Medication Tracking**: Keep track of your prescriptions and adherence with ease.
 *   **Drug Interaction Checker**: Instantly check if your medications overlap or conflict with one another.
 *   **Prescription Scanning**: Just snap a photo of your prescription to digitize it instantly involving Vision OCR.
@@ -19,7 +19,7 @@
 
 ---
 
-## 🏗️ Architecture & Services
+##  Architecture & Services
 
 The platform is built as a set of robust microservices to ensure scalability and separation of concerns:
 
@@ -31,7 +31,7 @@ The platform is built as a set of robust microservices to ensure scalability and
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 *   **Frontend**: React, Vite, TailwindCSS
 *   **Backend**: Python, FastAPI, Uvicorn
@@ -41,7 +41,7 @@ The platform is built as a set of robust microservices to ensure scalability and
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 Getting the entire system up and running is easy with Docker.
 
@@ -76,14 +76,14 @@ Getting the entire system up and running is easy with Docker.
 
 ---
 
-## 🔮 Future Roadmap
+##  Future Roadmap
 *   Mobile App (React Native) implementation.
 *   Deep integration with wearable devices.
 *   Advanced population health analytics dashboard.
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 We love contributions! Please read our `CONTRIBUTING.md` (coming soon) for details on our code of conduct, and the process for submitting pull requests.
 
 ---
