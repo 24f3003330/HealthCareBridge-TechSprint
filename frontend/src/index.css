@@ -1,218 +1,111 @@
-:root {
-    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-    color-scheme: light;
-    color: #1F2937;
-    background-color: #FDF8F0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    --background: 210 40% 98%;    /* Soft white/blue tint */
+    --foreground: 222 47% 11%;    /* Deep slate */
 
-    /* Hope Rise Theme Variables */
-    --primary: #10B981;
-    /* Bright Green */
-    --primary-hover: #059669;
-    --secondary: #F59E0B;
-    /* Warm Amber */
-    --accent: #F472B6;
-    /* Pink accent */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --success: #10B981;
-    --warning: #F59E0B;
-    --danger: #EF4444;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --bg-main: #FDF8F0;
-    /* Warm Beige */
-    --bg-card: #FFFFFF;
-    /* Pure White */
-    --glass-border: rgba(0, 0, 0, 0.05);
-    /* Very subtle border */
+    --primary: 221 83% 53%;       /* Bright Premium Blue */
+    --primary-foreground: 210 40% 98%;
 
-    --text-main: #1F2937;
-    /* Dark Grey */
-    --text-dim: #6B7280;
-    /* Muted Grey */
-    --text-muted: #9CA3AF;
-    /* Light Grey */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 19% 27%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 19% 27%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 224 76% 48%;
+  }
 }
 
-body {
-    margin: 0;
-    display: flex;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
-    background: var(--bg-main);
-    color: var(--text-main);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full transition-colors hover:bg-muted-foreground/40;
+  }
 }
 
-#root {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-    color: var(--text-main);
-}
-
-button {
-    border-radius: 999px;
-    /* Pill shape */
-    border: 1px solid transparent;
-    padding: 0.75em 1.5em;
-    /* Larger padding */
-    font-size: 1em;
-    font-weight: 600;
-    font-family: inherit;
-    background-color: white;
-    cursor: pointer;
-    transition: all 0.25s;
-    color: var(--text-main);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* Utilities */
-.text-gradient {
-    color: var(--primary);
-    /* Simplified for this theme */
-    background: none;
-    -webkit-text-fill-color: initial;
+/* Glassmorphism Utilities */
+.glass {
+  @apply bg-white/70 dark:bg-black/70 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg;
 }
 
 .glass-card {
-    /* Renaming kept for compatibility, but styled as "Warm Card" */
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 32px;
-    /* Large radius */
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-    /* Soft shadow */
-    overflow: hidden;
-    /* For images */
+  @apply bg-white/50 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.01];
 }
 
-.btn-primary {
-    background: var(--primary);
-    color: white;
-    border: none;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
-}
-
-.fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.badge {
-    padding: 0.35rem 1rem;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: inline-block;
-}
-
-.badge-success {
-    background: #D1FAE5;
-    color: #065F46;
-    border: none;
-}
-
-.badge-warning {
-    background: #FEF3C7;
-    color: #92400E;
-    border: none;
-}
-
-.badge-error {
-    background: #FEE2E2;
-    color: #991B1B;
-    border: none;
-}
-/* Form Elements */
-.form-label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-dim);
-  margin-bottom: 0.5rem;
-}
-
-.form-input,
-.form-select {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  padding-left: 2.75rem; /* Space for icon */
-  border-radius: 999px; /* Pill shape */
-  border: 1px solid #E5E7EB; /* Light grey border default */
-  background-color: var(--bg-card);
-  color: var(--text-main);
-  font-size: 0.95rem;
-  transition: all 0.2s;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  appearance: none; /* Remove default select styling */
-}
-
-.form-input:focus,
-.form-select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-}
-
-.filter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  align-items: flex-end;
-}
-
-.input-icon-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.input-icon-wrapper svg {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--text-muted);
-  pointer-events: none;
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600;
 }
